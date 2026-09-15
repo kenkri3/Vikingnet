@@ -1,43 +1,106 @@
-import ServicePageLayout from '../components/ServicePageLayout';
-import { Inbox, BarChart3, Users } from 'lucide-react';
+import ServicePageLayout, { type ServicePageData } from '../components/ServicePageLayout';
+import { Inbox, BarChart3, Users, MessageSquare, Zap, Clock } from 'lucide-react';
 
-const data = {
-  overline: 'Samlet Kundeservice',
-  title: 'Alle henvendelser på',
+const data: ServicePageData = {
+  serviceId: 'kundeservice-platform',
+  overline: 'Omnikanal Kundesenter & Innbokstriage',
+  title: 'Alle henvendelser samlet på',
   titleAccent: 'ett sted',
   description:
-    'Slutt å sjekke e-post, Messenger, chat og Instagram DM hver for seg. Vår Kundeservice Platform samler alle henvendelser på ett sted, slik at du aldri går glipp av en potensiell kunde.',
-  ctaText: 'Book en prat',
+    'Slutt å sjonglere mellom e-post, kontaktskjemaer, Messenger, Instagram DM og WhatsApp. Vår Omnikanal-plattform og AI-drevne innboksassistent samler alle henvendelser på én flate, strukturerer data og legger ferdige svarutkast klare for 1-klikks godkjenning.',
+  ctaText: 'Få tilbud på kundesenter',
   features: [
     {
       icon: Inbox,
-      title: 'Samlet Innboks',
+      title: 'Én Felles Innboks for Alt',
       description:
-        'E-post, live chat, Facebook Messenger, Instagram DM og WhatsApp — alt samlet i én innboks. Ingen flere faner å bytte mellom.',
+        'E-post, live chat, Facebook Messenger, Instagram DM og WhatsApp — alt samlet i én ryddig visning. Ingen tapte henvendelser eller glemte faner.',
+    },
+    {
+      icon: Zap,
+      title: 'Intelligent AI-Triage & Svarutkast',
+      description:
+        'AI leser innkommende meldinger, forstår hensikten, henter fakta fra interne registre og skriver ferdige svarutkast som venter på din godkjenning.',
     },
     {
       icon: Users,
-      title: 'Kundeprofiler',
+      title: 'Komplette Kundeprofiler & Historikk',
       description:
-        'Se full historikk for hver kunde. Tidligere samtaler, kjøp og notater — alt på ett sted for personlig service.',
+        'Se hele kundereisen på ett sted: tidligere e-poster, chatmeldinger, ordrer og notater. Gi rask og personlig service hver gang.',
+    },
+    {
+      icon: Clock,
+      title: 'Drastisk Kortere Responstid',
+      description:
+        'Svar kundene dine på minutter i stedet for dager. Høyere responshastighet gir merkbart mer fornøyde kunder og høyere salg.',
+    },
+    {
+      icon: MessageSquare,
+      title: 'Automatiske Ordrebekreftelser & Status',
+      description:
+        'Parser innkommende PDF-ordrer og e-postbestillinger automatisk, validerer innholdet og oppretter saksnummer uten manuell inntasting.',
     },
     {
       icon: BarChart3,
-      title: 'Statistikk & Innsikt',
+      title: 'Statistikk & Servicerapporter',
       description:
-        'Se responstider, antall henvendelser og kundetilfredshet. Data som hjelper deg å forbedre kundeservicen din.',
+        'Full oversikt over henvendelsesvolum, responstider og kundetilfredshet per kanal slik at du kan optimalisere bemanning og drift.',
     },
   ],
-  extraSection: {
-    title: 'Kanaler som',
-    titleAccent: 'kobles',
+  pricingSection: {
+    title: 'Forutsigbare pakker for',
+    titleAccent: 'kundeservice & innboks',
     description:
-      'Koble til alle kanalene dine på minutter. Vi støtter de mest populære kommunikasjonsplattformene.',
+      'Fra felles omnikanal-innboks til helautomatisert AI-innbokstriage.',
+    plans: [
+      {
+        name: 'Omnikanal Kundesenter',
+        subtitle: 'Felles innboks og triage for chat, e-post, Messenger og WhatsApp på én samlet flate.',
+        price: 'kr 890,-',
+        period: '/mnd',
+        setup: 'Etablering kr 9 900,- (eks mva)',
+        features: [
+          'Felles innboks for e-post, chat, Messenger & WhatsApp',
+          'Ubegrenset antall samtaler og meldinger',
+          'Kundehistorikk og samlet profiloversikt',
+          'Svar-maler og raske hurtigtaster',
+          'Europeisk sikker skylagring og GDPR-samsvar',
+          'Løpende teknisk support',
+        ],
+        highlighted: false,
+        ctaText: 'Få tilbud på kundesenter',
+        serviceId: 'kundeservice-platform',
+      },
+      {
+        name: 'Innboks- & Henvendelsesassistenten',
+        subtitle: 'Avansert AI-triage koblet til ordre@ eller post@ som parser PDF-er og klargjør svarutkast.',
+        price: 'kr 3 500,-',
+        period: '/mnd',
+        setup: 'Etablering kr 1 950,- (eks mva)',
+        features: [
+          'Alt i Omnikanal Kundesenter',
+          'Kobles direkte til bedriftens ordre@ eller post@',
+          'Parser innkommende e-poster og PDF-ordrer',
+          'Automatisk validering mot regnskap og CRM',
+          'Legger ferdige svarutkast klare for 1-klikks godkjenning',
+          'Frigjør 15–30 timer i måneden for administrasjonen',
+        ],
+        highlighted: true,
+        ctaText: 'Få tilbud på innboksassistent',
+        serviceId: 'innboks-assistent',
+      },
+    ],
+  },
+  extraSection: {
+    title: 'Kanalene som',
+    titleAccent: 'kobles sammen',
+    description:
+      'Koble til bedriftens eksisterende kommunikasjonsflater på få minutter uten å skifte ut nåværende systemer.',
     items: [
-      { title: 'E-post', description: 'Koble til din bedrifts-e-post med ett klikk.' },
-      { title: 'Live Chat', description: 'Chat-widget på din nettside.' },
-      { title: 'Messenger', description: 'Facebook Messenger direkte i plattformen.' },
-      { title: 'Instagram DM', description: 'Svar på Instagram-meldinger her.' },
+      { title: 'E-post', description: 'Koble til bedrifts-e-post (Google Workspace eller Microsoft 365).' },
+      { title: 'Live Chat', description: 'Lynrask chat-widget installert direkte på din nettside.' },
+      { title: 'Facebook Messenger', description: 'Motta og besvar meldinger sendt til din Facebook-side.' },
+      { title: 'Instagram DM', description: 'Håndter alle Instagram-henvendelser direkte fra samme innboks.' },
     ],
   },
 };

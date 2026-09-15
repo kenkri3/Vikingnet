@@ -12,7 +12,7 @@ const navLinks = [
 const loginOptions = [
   { label: 'AI Agent-plattform (Autonomi)', href: 'https://app.vikingnet.no/auth/login' },
   { label: 'AutoFeed (Sosiale Medier)', href: 'https://some.vikingnet.no/login' },
-  { label: 'Byggeplattform', href: 'https://aichatglobal.com/login?sub=fredrik-14' },
+  { label: 'VikingMester (Byggeplattform)', href: 'https://vikingmester.no' },
 ];
 
 export default function Navigation() {

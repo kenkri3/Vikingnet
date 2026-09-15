@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Send, CheckCircle, MapPin, Mail, Phone } from 'lucide-react';
+import { Send, CheckCircle, MapPin, Mail, Phone, ShieldCheck } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -40,12 +40,11 @@ export default function ContactForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate submission
     setSubmitted(true);
     setTimeout(() => {
       setSubmitted(false);
       setForm({ name: '', email: '', company: '', phone: '', service: '', message: '' });
-    }, 4000);
+    }, 4500);
   };
 
   const handleChange = (
@@ -72,17 +71,31 @@ export default function ContactForm() {
             }
           }}>
             <span className="inline-block px-4 py-1.5 rounded-full bg-[#3B82F6]/10 border border-[#3B82F6]/20 text-[#3B82F6] text-xs font-semibold tracking-wider uppercase mb-6">
-              Ta kontakt
+              100 % Asynkron Bestilling
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-white leading-tight mb-4">
               Klar for å <span className="text-gradient">vokse?</span>
             </h2>
-            <p className="text-lg text-[#94a3b8] mb-10 leading-relaxed">
-              Fortell oss om prosjektet ditt, så tar vi en uforpliktende prat. Vi
-              svarer innen 1 time på hverdager.
+            <p className="text-lg text-[#94a3b8] mb-8 leading-relaxed">
+              Fortell oss om prosjektet ditt, så utarbeider vi et uforpliktende skriftlig tilbud med fast månedspris og etablering sendt rett til din e-post. Vi svarer innen 1 time på virkedager.
             </p>
 
-            <div className="space-y-5">
+            <div className="space-y-4 mb-8">
+              <div className="flex items-center gap-3 text-sm text-[#cbd5e1]">
+                <ShieldCheck size={18} className="text-emerald-400 flex-shrink-0" />
+                <span>Ingen tidkrevende møteplikt — godkjenn direkte på e-post</span>
+              </div>
+              <div className="flex items-center gap-3 text-sm text-[#cbd5e1]">
+                <ShieldCheck size={18} className="text-emerald-400 flex-shrink-0" />
+                <span>Forskuddsfakturering via EHF med 10 dagers forfall</span>
+              </div>
+              <div className="flex items-center gap-3 text-sm text-[#cbd5e1]">
+                <ShieldCheck size={18} className="text-emerald-400 flex-shrink-0" />
+                <span>Ingen bindingstid på standard månedsabonnement</span>
+              </div>
+            </div>
+
+            <div className="space-y-5 pt-4 border-t border-white/[0.08]">
               <div className="flex items-center gap-4">
                 <div className="w-11 h-11 rounded-xl bg-[#3B82F6]/10 flex items-center justify-center flex-shrink-0">
                   <MapPin size={18} className="text-[#3B82F6]" />
@@ -121,11 +134,14 @@ export default function ContactForm() {
           <div className="bg-[#151e32] rounded-2xl border border-white/[0.08] p-8 lg:p-10">
             {submitted ? (
               <div className="flex flex-col items-center justify-center h-full py-12 text-center">
-                <CheckCircle size={48} className="text-[#3B82F6] mb-4" />
-                <h3 className="text-2xl font-bold text-white mb-2">Takk!</h3>
-                <p className="text-[#94a3b8]">
-                  Vi har mottatt meldingen din og kontakter deg snart.
+                <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-4 text-emerald-400">
+                  <CheckCircle size={36} />
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-2">Forespørsel mottatt!</h3>
+                <p className="text-[#94a3b8] max-w-[400px] text-sm leading-relaxed mb-4">
+                  Vi utarbeider et komplett tilbud og sender det til din e-post innen kort tid.
                 </p>
+                <span className="text-xs text-[#3B82F6]">Du godkjenner enkelt direkte på e-post.</span>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
@@ -140,13 +156,13 @@ export default function ContactForm() {
                       required
                       value={form.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl bg-[#0B1120] border border-white/[0.08] text-white placeholder-[#94a3b8]/50 focus:border-[#3B82F6] focus:outline-none focus:ring-1 focus:ring-[#3B82F6]/30 transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-[#0B1120] border border-white/[0.08] text-white placeholder-[#94a3b8]/50 focus:border-[#3B82F6] focus:outline-none focus:ring-1 focus:ring-[#3B82F6]/30 transition-all text-sm"
                       placeholder="Ditt navn"
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-white mb-2">
-                      E-post *
+                      E-post (for tilbud) *
                     </label>
                     <input
                       type="email"
@@ -154,8 +170,8 @@ export default function ContactForm() {
                       required
                       value={form.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl bg-[#0B1120] border border-white/[0.08] text-white placeholder-[#94a3b8]/50 focus:border-[#3B82F6] focus:outline-none focus:ring-1 focus:ring-[#3B82F6]/30 transition-all"
-                      placeholder="din@epost.no"
+                      className="w-full px-4 py-3 rounded-xl bg-[#0B1120] border border-white/[0.08] text-white placeholder-[#94a3b8]/50 focus:border-[#3B82F6] focus:outline-none focus:ring-1 focus:ring-[#3B82F6]/30 transition-all text-sm"
+                      placeholder="din@bedrift.no"
                     />
                   </div>
                 </div>
@@ -163,15 +179,15 @@ export default function ContactForm() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-sm font-medium text-white mb-2">
-                      Bedrift
+                      Bedrift / Org.nr
                     </label>
                     <input
                       type="text"
                       name="company"
                       value={form.company}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl bg-[#0B1120] border border-white/[0.08] text-white placeholder-[#94a3b8]/50 focus:border-[#3B82F6] focus:outline-none focus:ring-1 focus:ring-[#3B82F6]/30 transition-all"
-                      placeholder="Din bedrift"
+                      className="w-full px-4 py-3 rounded-xl bg-[#0B1120] border border-white/[0.08] text-white placeholder-[#94a3b8]/50 focus:border-[#3B82F6] focus:outline-none focus:ring-1 focus:ring-[#3B82F6]/30 transition-all text-sm"
+                      placeholder="Bedriftsnavn eller org.nr"
                     />
                   </div>
                   <div>
@@ -183,7 +199,7 @@ export default function ContactForm() {
                       name="phone"
                       value={form.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl bg-[#0B1120] border border-white/[0.08] text-white placeholder-[#94a3b8]/50 focus:border-[#3B82F6] focus:outline-none focus:ring-1 focus:ring-[#3B82F6]/30 transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-[#0B1120] border border-white/[0.08] text-white placeholder-[#94a3b8]/50 focus:border-[#3B82F6] focus:outline-none focus:ring-1 focus:ring-[#3B82F6]/30 transition-all text-sm"
                       placeholder="+47 000 00 000"
                     />
                   </div>
@@ -191,38 +207,49 @@ export default function ContactForm() {
 
                 <div>
                   <label className="block text-sm font-medium text-white mb-2">
-                    Hva trenger du hjelp med?
+                    Hva gjelder tilbudet? *
                   </label>
                   <select
                     name="service"
+                    required
                     value={form.service}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl bg-[#0B1120] border border-white/[0.08] text-white focus:border-[#3B82F6] focus:outline-none focus:ring-1 focus:ring-[#3B82F6]/30 transition-all appearance-none cursor-pointer"
+                    className="w-full px-4 py-3 rounded-xl bg-[#0B1120] border border-white/[0.08] text-white focus:border-[#3B82F6] focus:outline-none focus:ring-1 focus:ring-[#3B82F6]/30 transition-all appearance-none cursor-pointer text-sm"
                   >
-                    <option value="">Velg en tjeneste</option>
-                    <option value="smart-nettside">Smart Nettside</option>
-                    <option value="nettside">Nettside</option>
-                    <option value="nettbutikk">Nettbutikk</option>
-                    <option value="ai-chatbot">AI Chatbot</option>
-                    <option value="ai-agent">AI Agent</option>
-                    <option value="autofeed">AutoFeed</option>
-                    <option value="automatisering">Automatisering</option>
-                    <option value="skreddersom">Skreddersøm</option>
-                    <option value="annet">Annet</option>
+                    <option value="">Velg en løsning...</option>
+                    <optgroup label="B2B Salgsagenter & Outreach">
+                      <option value="ai-agent-niva1">B2B Salgsagent Nivå 1: Lead Hunter (kr 4 900,-/mnd)</option>
+                      <option value="ai-agent-niva2">B2B Salgsagent Nivå 2: Møtebooker (kr 7 900,-/mnd)</option>
+                      <option value="ai-agent-niva3">B2B Salgsagent Nivå 3: Salgscloser (kr 12 500,-/mnd)</option>
+                      <option value="qognito">Qognito LinkedIn Outreach (fra kr 1 490,-/mnd)</option>
+                    </optgroup>
+                    <optgroup label="Nettsider & E-handel">
+                      <option value="smart-nettside">Smart Nettside m/ AI (kr 990,-/mnd + 24 900,-)</option>
+                      <option value="nettside">Standard Nettside (kr 490,-/mnd + 14 900,-)</option>
+                      <option value="nettbutikk">Nettbutikk & E-handel (kr 1 490,-/mnd + 29 900,-)</option>
+                      <option value="skreddersom">Skreddersydd Webapp / Portal (fra kr 1 950,-/mnd)</option>
+                    </optgroup>
+                    <optgroup label="AI, Automatisering & Drift">
+                      <option value="autofeed">AutoFeed Sosiale Medier (kr 498,-/mnd)</option>
+                      <option value="ai-chatbot">24/7 AI-Chatbot (kr 790,-/mnd + 9 900,-)</option>
+                      <option value="automatisering">API-integrasjon & Automatisering (fra kr 490,-/mnd)</option>
+                      <option value="kundeservice-platform">Omnikanal Kundesenter (kr 890,-/mnd)</option>
+                      <option value="annet">Annet / Rådgivning</option>
+                    </optgroup>
                   </select>
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-white mb-2">
-                    Melding
+                    Beskrivelse / Kommentar
                   </label>
                   <textarea
                     name="message"
                     rows={4}
                     value={form.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl bg-[#0B1120] border border-white/[0.08] text-white placeholder-[#94a3b8]/50 focus:border-[#3B82F6] focus:outline-none focus:ring-1 focus:ring-[#3B82F6]/30 transition-all resize-none"
-                    placeholder="Fortell oss om prosjektet ditt..."
+                    className="w-full px-4 py-3 rounded-xl bg-[#0B1120] border border-white/[0.08] text-white placeholder-[#94a3b8]/50 focus:border-[#3B82F6] focus:outline-none focus:ring-1 focus:ring-[#3B82F6]/30 transition-all resize-none text-sm"
+                    placeholder="Fortell kort om målgruppe, ønsket løsning eller spesielle behov..."
                   />
                 </div>
 
@@ -231,7 +258,7 @@ export default function ContactForm() {
                   className="w-full py-4 rounded-full bg-gradient-primary text-white font-semibold text-base hover:shadow-[0_0_30px_rgba(59,130,246,0.4)] hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-2"
                 >
                   <Send size={18} />
-                  Send melding
+                  Motta skriftlig tilbud på e-post
                 </button>
 
                 <p className="text-xs text-[#94a3b8]/60 text-center">
@@ -239,7 +266,7 @@ export default function ContactForm() {
                   <a href="#/personvern" className="text-[#3B82F6] hover:underline">
                     personvernerklæring
                   </a>
-                  .
+                  . Forskuddsfaktureres via EHF eller e-post.
                 </p>
               </form>
             )}

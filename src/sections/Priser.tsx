@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Check } from 'lucide-react';
+import { Check, ArrowRight, ShieldCheck } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -7,30 +7,48 @@ gsap.registerPlugin(ScrollTrigger);
 
 const plans = [
   {
-    name: 'Nettside',
-    subtitle: 'For deg som trenger et solid digitalt løft.',
+    name: 'Nettside (Standard)',
+    subtitle: 'For deg som trenger et solid, moderne og raskt digitalt ansikt utad.',
     price: 'Fra 14.900,-',
     monthly: 'mnd. avgift fra 490,-',
-    features: ['Moderne Design', 'Mobilvennlig', 'Kontaktskjema'],
-    cta: 'Velg Start',
+    features: [
+      'Moderne skreddersydd design',
+      'Fullt mobilresponsivt',
+      'Kontaktskjema med e-postvarsel',
+      'Domene, SSL & europeisk hosting',
+      'Teknisk SEO-grunnpakke',
+    ],
+    cta: 'Få tilbud på Nettside',
     highlighted: false,
   },
   {
     name: 'Smart Nettside',
-    subtitle: 'Med integrert AI og booking.',
+    subtitle: 'Vår bestselger med integrert 24/7 AI-ansatt og auto-booking.',
     price: 'Fra 24.900,-',
     monthly: 'mnd. avgift fra 990,-',
-    features: ['Alt i Nettside, pluss:', 'Integrert AI-Chatbot (Support)', 'Auto-Booking kalender', 'SEO-grunnpakke'],
-    cta: 'Start Prosjektet',
+    features: [
+      'Alt i Standard Nettside, pluss:',
+      '24/7 AI-Chatbot trent på din bedrift',
+      'Auto-Booking med kalendersynk',
+      'Konverteringsoptimalisert design',
+      'Løpende teknisk support & vedlikehold',
+    ],
+    cta: 'Bestill Smart Nettside',
     highlighted: true,
   },
   {
-    name: 'Skreddersøm',
-    subtitle: 'For bedrifter som skal dominere.',
+    name: 'Skreddersøm & Webapp',
+    subtitle: 'For bedrifter som krever unike integrasjoner og portaler.',
     price: 'Fra 49.000,-',
-    monthly: '+ driftsavtale',
-    features: ['Skreddersydd App/Web', 'Avansert AI-Salgsagent', 'CRM-Integrasjon'],
-    cta: 'Ta Kontakt',
+    monthly: 'mnd. avgift fra 1.950,-',
+    features: [
+      'Skreddersydd B2B App / Kundeportal',
+      'Dype ERP- & API-integrasjoner (Tripletex/Fiken)',
+      '100 % kildekodeeierskap',
+      'Avansert logikk og flerspråklighet',
+      'Dedikert SLA-supportavtale',
+    ],
+    cta: 'Få tilbud på Skreddersøm',
     highlighted: false,
   },
 ];
@@ -65,10 +83,30 @@ export default function Priser({ onBook }: PriserProps) {
     <section id="priser" ref={sectionRef} className="relative z-10 py-24 lg:py-32" style={{ background: `radial-gradient(ellipse at center top, rgba(59,130,246,0.06) 0%, transparent 60%), #0f172a` }}>
       <div className="max-w-[1280px] mx-auto px-6">
         <div ref={headingRef} className="text-center mb-16 opacity-0">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-[#3B82F6]/10 border border-[#3B82F6]/20 text-[#3B82F6] text-xs font-semibold tracking-wider uppercase mb-4">
+            Priser & Investering
+          </span>
           <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-white leading-tight mb-4">
             Invester i <span className="text-gradient">Fremtiden</span>
           </h2>
-          <p className="text-lg text-[#94a3b8]">Smarte nettsider. Ingen skjulte kostnader.</p>
+          <p className="text-lg text-[#94a3b8] max-w-[600px] mx-auto">
+            Faste etableringspriser og forutsigbar drift. Ingen skjulte kostnader.
+          </p>
+
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-6 text-xs text-[#94a3b8]/80">
+            <span className="flex items-center gap-1.5">
+              <ShieldCheck size={14} className="text-emerald-400" />
+              100 % asynkron bestilling & closing
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Check size={14} className="text-[#3B82F6]" />
+              Forskuddsfakturering via EHF
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Check size={14} className="text-[#3B82F6]" />
+              Ingen bindingstid på standardabonnement
+            </span>
+          </div>
         </div>
 
         <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
@@ -92,9 +130,9 @@ export default function Priser({ onBook }: PriserProps) {
                 <p className="text-sm text-[#94a3b8]">{plan.subtitle}</p>
               </div>
 
-              <div className="mb-6">
+              <div className="mb-6 pb-6 border-b border-white/[0.08]">
                 <div className={`text-3xl lg:text-4xl font-bold ${plan.highlighted ? 'text-gradient' : 'text-white'}`}>{plan.price}</div>
-                <div className={`text-sm mt-1 ${plan.highlighted ? 'text-[#3B82F6]' : 'text-[#94a3b8]'}`}>{plan.monthly}</div>
+                <div className={`text-sm mt-1.5 font-medium ${plan.highlighted ? 'text-[#3B82F6]' : 'text-[#94a3b8]'}`}>{plan.monthly}</div>
               </div>
 
               <ul className="space-y-3.5 mb-8">
@@ -108,13 +146,14 @@ export default function Priser({ onBook }: PriserProps) {
 
               <button
                 onClick={onBook}
-                className={`w-full py-3.5 rounded-full font-semibold text-[15px] transition-all duration-300 ${
+                className={`w-full py-3.5 rounded-full font-semibold text-[15px] transition-all duration-300 flex items-center justify-center gap-2 ${
                   plan.highlighted
                     ? 'bg-gradient-primary text-white hover:shadow-[0_0_30px_rgba(59,130,246,0.3)]'
                     : 'border border-white/20 text-white hover:border-[#3B82F6] hover:text-[#3B82F6]'
                 }`}
               >
                 {plan.cta}
+                <ArrowRight size={16} />
               </button>
             </div>
           ))}

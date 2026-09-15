@@ -9,10 +9,10 @@ const cases = [
   {
     image: '/assets/ks-mester-real.jpg',
     tags: ['Skreddersøm', 'AI-plattform'],
-    title: 'KSMester.no',
+    title: 'VikingMester (vikingmester.no)',
     description:
-      'Utvikling av Norges smarteste KS-system for håndverkere. Komplett digital plattform med 15+ AI-funksjoner, offline-modus og 50+ dokumentasjonsverktøy.',
-    link: 'https://ksmester.no',
+      'Norges smarteste helautonome KS- og byggelederagent for håndverkere. Komplett digital plattform med stemmestyring, bildegjenkjenning av avvik og offline-modus.',
+    link: 'https://vikingmester.no',
   },
   {
     image: '/assets/nonfood.jpg',

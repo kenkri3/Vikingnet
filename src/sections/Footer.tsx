@@ -10,10 +10,12 @@ const menuLinks = [
 ];
 
 const solutionLinks = [
-  { label: 'Smart Nettside', to: '/smart-nettside' },
-  { label: 'AI Chatbot', to: '/ai-chatbot' },
-  { label: 'Auto-Booking', to: '/smart-nettside' },
-  { label: 'SEO & Synlighet', to: '/nettside' },
+  { label: 'B2B Salgsagent (Spydspiss)', to: '/ai-agent' },
+  { label: 'Smart Nettside m/ AI', to: '/smart-nettside' },
+  { label: 'Qognito LinkedIn-salg', to: '/qognito' },
+  { label: 'AutoFeed Sosiale Medier', to: '/autofeed' },
+  { label: 'Nettbutikk & E-handel', to: '/nettbutikk' },
+  { label: 'AI Chatbot 24/7', to: '/ai-chatbot' },
 ];
 
 export default function Footer() {

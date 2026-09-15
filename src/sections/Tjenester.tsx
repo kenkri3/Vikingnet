@@ -6,7 +6,7 @@ import {
   ShoppingCart,
   Code,
   Smartphone,
-  Search,
+  MailCheck,
   MessageCircle,
   Zap,
   Headphones,
@@ -20,64 +20,64 @@ gsap.registerPlugin(ScrollTrigger);
 
 const services = [
   {
+    icon: MailCheck,
+    title: 'B2B Salgsagent (Spydspiss)',
+    description: 'Fyll kalenderen og ordreboken. Prospekterer i Enhetsregisteret, sender kald e-post og booker møter på autopilot.',
+    link: '/ai-agent',
+  },
+  {
     icon: Rocket,
     title: 'Smarte Nettsider',
-    description: 'Fremtidens nettside. Integrert med booking, kontaktskjemaer og automasjon. Jobber for deg døgnet rundt.',
+    description: 'Vår bestselger. Nettside integrert med 24/7 AI-assistent, kalendersynk og automatisk møtebooking.',
     link: '/smart-nettside',
-  },
-  {
-    icon: Monitor,
-    title: 'Nettside',
-    description: 'En solid, profesjonell nettside for bedrifter som vil vise seg frem. Responsivt design og høy ytelse.',
-    link: '/nettside',
-  },
-  {
-    icon: ShoppingCart,
-    title: 'Nettbutikk',
-    description: 'Komplett e-handelsløsning. Vi setter opp betaling, produktsider og lagerstyring.',
-    link: '/nettbutikk',
-  },
-  {
-    icon: Code,
-    title: 'Skreddersøm',
-    description: 'Har du en unik idé? Vi utvikler spesialtilpasset programvare og apper for dine behov.',
-    link: '/skreddersom',
-  },
-  {
-    icon: Smartphone,
-    title: 'AutoFeed',
-    description: 'Din KI-drevne sosiale medier-motor. Genererer tekst, bilder og publiserer poster på autopilot.',
-    link: '/autofeed',
-  },
-  {
-    icon: Search,
-    title: 'AI Agent',
-    description: 'En digital medarbeider som kan utføre oppgaver, hente informasjon og kontakte kunder automatisk.',
-    link: '/ai-agent',
   },
   {
     icon: Linkedin,
     title: 'Qognito — LinkedIn-salg',
-    description: 'Norges første AI-agent for LinkedIn-salg. Finner leads, starter samtaler på norsk og booker møter — helt automatisk.',
+    description: 'Autonom B2B LinkedIn-outreach. Finner beslutningstakere, starter samtaler på norsk og booker møter uten binding.',
     link: '/qognito',
   },
   {
+    icon: Monitor,
+    title: 'Nettside (Standard)',
+    description: 'Klassisk, lynrask og mobiloptimalisert representasjon for bedrifter som vil ha et trygt digitalt ansikt utad.',
+    link: '/nettside',
+  },
+  {
+    icon: ShoppingCart,
+    title: 'Nettbutikk & E-handel',
+    description: 'Komplett e-handelsplattform med Vipps Checkout, Klarna, automatisk lagerstyring og lynrask mobilkasse.',
+    link: '/nettbutikk',
+  },
+  {
+    icon: Smartphone,
+    title: 'AutoFeed Sosiale Medier',
+    description: 'Kontinuerlig synlighet på autopilot. Norsk KI-generert innhold, bilder og publisering for Facebook, IG, LI og Google.',
+    link: '/autofeed',
+  },
+  {
     icon: MessageCircle,
-    title: 'Chatbot',
-    description: '24/7 kundesupport på nettsiden din. Svarer på spørsmål umiddelbart og øker kundetilfredsheten.',
+    title: '24/7 AI-Chatbot',
+    description: 'Norskspråklig kundechatbot trent på din virksomhet. Svarer kunder, kvalifiserer henvendelser og fanger leads døgnet rundt.',
     link: '/ai-chatbot',
   },
   {
     icon: Zap,
-    title: 'Automatisering',
-    description: 'Koble sammen systemene dine. Når en kunde kjøper, sendes faktura og e-post automatisk.',
+    title: 'Automatisering & API-bro',
+    description: 'Koble sammen systemene dine. Toveis synkronisering mellom nettside, CRM, e-post og regnskap (Tripletex/Fiken).',
     link: '/automatisering',
   },
   {
     icon: Headphones,
-    title: 'Kundeservice Platform',
-    description: 'Samling av alle henvendelser (E-post, Chat, Messenger) på ett sted for full kontroll.',
+    title: 'Omnikanal Kundesenter',
+    description: 'Felles innboks for e-post, chat, Messenger og WhatsApp med intelligent AI-triage og ferdige svarutkast.',
     link: '/kundeservice-platform',
+  },
+  {
+    icon: Code,
+    title: 'Skreddersøm & B2B Webapper',
+    description: 'Når hyllevare ikke strekker til. Vi bygger skreddersydde portaler, SaaS-løsninger og komplekse fagsystemer.',
+    link: '/skreddersom',
   },
 ];
 
@@ -117,11 +117,14 @@ export default function Tjenester() {
     <section id="tjenester" ref={sectionRef} className="relative z-10 py-24 lg:py-32 bg-[#0B1120]">
       <div className="max-w-[1280px] mx-auto px-6">
         <div ref={headingRef} className="text-center mb-16 opacity-0">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-[#3B82F6]/10 border border-[#3B82F6]/20 text-[#3B82F6] text-xs font-semibold tracking-wider uppercase mb-4">
+            Helautonome Løsninger
+          </span>
           <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-white leading-tight mb-4">
-            Digitale verktøy som <span className="text-gradient">vokser med deg</span>
+            Digitale verktøy som <span className="text-gradient">jobber og selger for deg</span>
           </h2>
           <p className="text-lg text-[#94a3b8] max-w-[640px] mx-auto">
-            Fra nettsider til AI-agenter — vi bygger løsninger som jobber for deg døgnet rundt.
+            Fra salgsagenter og møtebooking til smarte nettsider — 100 % asynkron drift, faste priser og ingen overraskelser.
           </p>
         </div>
 
@@ -144,7 +147,7 @@ export default function Tjenester() {
                   to={service.link}
                   className="inline-flex items-center gap-1.5 text-sm font-medium text-[#3B82F6] group/link hover:underline"
                 >
-                  Les mer
+                  Les mer & se priser
                   <ArrowRight size={14} className="group-hover/link:translate-x-1 transition-transform" />
                 </Link>
               </div>

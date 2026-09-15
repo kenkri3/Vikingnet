@@ -1,68 +1,159 @@
-import ServicePageLayout from '../components/ServicePageLayout';
-import { MessageSquare, Plug, Wand2 } from 'lucide-react';
+import ServicePageLayout, { type ServicePageData } from '../components/ServicePageLayout';
+import { Target, MailCheck, CalendarCheck, TrendingUp, ShieldAlert, Cpu } from 'lucide-react';
 
-const data = {
-  overline: 'Neste Generasjons Agentic AI',
-  title: 'Bygg AI-agenter med',
-  titleAccent: 'kun ord',
+const data: ServicePageData = {
+  serviceId: 'ai-agent-niva2',
+  overline: 'Spydspiss #1 i Norsk B2B-salg',
+  title: 'Den Autonome B2B',
+  titleAccent: 'Salgs- & Møtebookeragenten',
   description:
-    'Ingen koding. Ingen teknisk kunnskap. Bare fortell plattformen hva du vil ha, så bygger den agentene dine. Du skriver på norsk — vi gjør resten.',
-  ctaText: 'Book en demo',
-  ctaTextSecondary: 'Start din AI-reise',
-  ctaHref: 'https://app.vikingnet.no/auth/signup',
+    'Fyll kalenderen og ordreboken på autopilot. Agenten prospekterer beslutningstakere i Enhetsregisteret, sender skreddersydde e-poster via oppvarmede domener, filtrerer svar og leverer ferdig kvalifiserte møter rett i innboksen din.',
+  ctaText: 'Få tilbud på salgsagent',
   features: [
     {
-      icon: Wand2,
-      title: 'Prompt-drevet Bygging',
+      icon: Target,
+      title: 'Prospektering i Enhetsregisteret',
       description:
-        'Beskriv agenten din i vanlig norsk. "En AI som svarer på spørsmål om priser og booker møter" — så bygger vi den.',
+        'Dyp B2B-databerikelse mot Brønnøysundregistrene. Finner verifiserte daglige ledere og beslutningstakere i din eksakte målgruppe.',
     },
     {
-      icon: Plug,
-      title: 'Grenseløse Integrasjoner',
+      icon: MailCheck,
+      title: 'Oppvarmede Domener & Høy Leveringsevne',
       description:
-        'Med native MCP-støtte kobles Vikingnet til alt fra Shopify og HubSpot til dine egne interne databaser på sekunder.',
+        'Vi setter opp og varmer opp dedikerte sekundærdomener med SPF, DKIM og DMARC slik at e-postene alltid lander trygt i innboksen.',
     },
     {
-      icon: MessageSquare,
-      title: 'Omnikanal Dominans',
+      icon: CalendarCheck,
+      title: 'Autonom Innbokstriage & Møtebooking',
       description:
-        'Vær tilstede der samtalen skjer. WhatsApp, Messenger, Instagram, SMS og Web – alt styrt av én intelligent hjerne.',
+        'Agenten skiller «ja takk», spørsmål og avmeldinger. Ved interesse følges dialogen opp og møtet bookes direkte inn i din kalender.',
+    },
+    {
+      icon: TrendingUp,
+      title: 'Ekstrem ROI & Lav Terskel',
+      description:
+        'Erstatter en kostbar intern møtebooker eller eksternt callsenter. Én ny kunde i måneden dekker normalt agentens månedspris mange ganger over.',
+    },
+    {
+      icon: Cpu,
+      title: '100 % Flerkanalsverdi i Innboksen',
+      description:
+        'Kunden trenger ikke logge inn i nye verktøy. Varme henvendelser og kalenderavtaler lander rett i ditt eksisterende e-post- og kalendersystem.',
+    },
+    {
+      icon: ShieldAlert,
+      title: 'Sperrelister & Respekt for Norsk Lov',
+      description:
+        'Deterministisk filtrering, automatisk håndtering av opt-outs og full isolasjon mot eksisterende kunder og uønskede mottakere.',
     },
   ],
-  extraSection: {
-    title: 'Ingen kode.',
-    titleAccent: 'Bare prompts.',
+  pricingSection: {
+    title: 'Velg ditt',
+    titleAccent: 'salgsnivå',
     description:
-      'Du trenger ikke være utvikler. Du trenger ikke forstå API-er. Alt du trenger er å beskrive hva du vil ha — så bygger vår plattform agenten din i sanntid.',
+      'Fast månedsabonnement forskuddsfakturert via EHF. Ingen skjulte kostnader. Ved forskuddsbetalt årsavtale frafalles etableringsgebyret helt.',
+    plans: [
+      {
+        name: 'Nivå 1: Lead Hunter & Innbokstriage',
+        subtitle: 'For bedrifter med egne selgere som kun vil ha ferdig kvalifiserte henvendelser i innboksen.',
+        price: 'kr 4 900,-',
+        period: '/mnd',
+        setup: 'Etablering kr 2 950,- (kr 0,- v/ år)',
+        features: [
+          'Prospektering mot Enhetsregisteret (AS)',
+          'Verifisering av beslutningstakere',
+          'Kald e-postutsendelse via oppvarmede domener',
+          'Automatisk filtrering av nei/avmeldinger',
+          'Varme leads videresendes rett til selgers innboks',
+          '100 % asynkron drift',
+        ],
+        highlighted: false,
+        ctaText: 'Velg Lead Hunter',
+        serviceId: 'ai-agent-niva1',
+      },
+      {
+        name: 'Nivå 2: Den Autonome Møtebookeren',
+        subtitle: 'For konsulenter, rådgivere, IT/SaaS og håndverkere som vil ha kalenderen fylt opp med beslutningstakere.',
+        price: 'kr 7 900,-',
+        period: '/mnd',
+        setup: 'Etablering kr 3 950,- (kr 0,- v/ år)',
+        features: [
+          'Alt i Nivå 1 (Lead Hunter)',
+          'Tar dialogen videre ved positiv respons',
+          'Besvarer innledende spørsmål på naturlig norsk',
+          'Booker møtet direkte i din kalender (Google/Outlook)',
+          'Automatiske påminnelser før møtet',
+          'Månedlig resultatrapport',
+        ],
+        highlighted: true,
+        ctaText: 'Velg Møtebooker',
+        serviceId: 'ai-agent-niva2',
+      },
+      {
+        name: 'Nivå 3: Full-Funnel Salgscloser',
+        subtitle: 'For standardiserte B2B-produkter, kurs og faste serviceavtaler som kan lukkes asynkront i innboksen.',
+        price: 'kr 12 500,-',
+        period: '/mnd',
+        setup: 'Etablering kr 4 950,- (kr 0,- v/ år)',
+        features: [
+          'Alt i Nivå 1 og 2',
+          'Sender standardiserte produktark og tilbud',
+          'Følger opp ubesvarte tilbud automatisk',
+          'Håndterer innvendinger på e-post',
+          'Innhenter skriftlig ordreaksept asynkront',
+          'Genererer ferdig fakturagrunnlag',
+        ],
+        highlighted: false,
+        ctaText: 'Velg Salgscloser',
+        serviceId: 'ai-agent-niva3',
+      },
+    ],
+  },
+  extraSection: {
+    title: 'Slik fungerer det',
+    titleAccent: 'i praksis',
+    description:
+      'Fra definert målgruppe til varme leads i innboksen. Vi gjør hele grovarbeidet for deg.',
     items: [
-      { title: 'Beskriv', description: 'Fortell i vanlig tekst hva agenten skal gjøre.' },
-      { title: 'Konfigurer', description: 'Legg til verktøy og integrasjoner via prompts.' },
-      { title: 'Test', description: 'Chat med agenten og juster med nye instruksjoner.' },
-      { title: 'Deploy', description: 'Agenten er live og klar til å hjelpe kundene dine.' },
+      {
+        title: '01. Målgruppe',
+        description: 'Vi definerer bransje, geografi, omsetning og roller i Enhetsregisteret.',
+      },
+      {
+        title: '02. Infrastruktur',
+        description: 'Vi setter opp oppvarmede domener, SPF, DKIM og DMARC for maksimal levering.',
+      },
+      {
+        title: '03. Utsending',
+        description: 'Agenten sender naturlige, presise meldinger i kontrollert tempo på hverdager.',
+      },
+      {
+        title: '04. Leveranse',
+        description: 'Varme leads og møtebookinger lander direkte i din innboks og kalender.',
+      },
     ],
   },
   promptSection: {
-    title: 'Slik ser det ut i',
-    titleAccent: 'praksis',
+    title: 'Eksempler på',
+    titleAccent: 'kampanjeløp',
     description:
-      'Du skriver en setning. Vår plattform tolker, bygger og deployer. Her er noen eksempler på hva du kan be om:',
+      'Her er typiske oppdrag våre autonome salgsagenter håndterer for norske bedrifter:',
     examples: [
       {
-        prompt: '"En chatbot som svarer på FAQ om mine tjenester og eskalerer til meg når nødvendig"',
-        result: 'AI-agent med FAQ-kunnskap + eskaleringslogikk',
+        prompt: '«Finn daglige ledere i byggmesterbedrifter på Østlandet og presenter vår nye KS-programvare»',
+        result: 'Agenten henter 250 verifiserte byggmestere, sender personlige henvendelser og booker demoer.',
       },
       {
-        prompt: '"En AI-selger som finner leads på LinkedIn og sender personlige meldinger"',
-        result: 'Autonom agent med web-søk + meldingsgenerering',
+        prompt: '«Kontakt regnskapskontorer i Oslo/Viken for å presentere vår automatiske årsoppgjørsmodul»',
+        result: 'Kvalifiserte partnere mottar produktark og svarer ja til en kort videoprat.',
       },
       {
-        prompt: '"En support-agent som sjekker ordrestatus i Shopify og svarer kunden"',
-        result: 'Integrert agent med Shopify API-tilgang',
+        prompt: '«Send personlig oppfølging til bedrifter som har ubesvarte tilbud fra forrige måned»',
+        result: 'Agenten henter inn aksept på 1-sides ordrebekreftelse asynkront rett i innboksen.',
       },
       {
-        prompt: '"En booking-assistent som sjekker kalenderen min og setter opp møter"',
-        result: 'Kalender-synkronisert agent med auto-booking',
+        prompt: '«Overvåk innboksen for nye henvendelser og svar innen 5 minutter med riktig pris og kalenderlenke»',
+        result: 'Ingen leads kjølner, og kalenderen fylles opp uten manuelt tastearbeid.',
       },
     ],
   },

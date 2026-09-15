@@ -7,19 +7,29 @@ gsap.registerPlugin(ScrollTrigger);
 
 const faqs = [
   {
-    question: 'Hva koster egentlig en "Smart Nettside"?',
+    question: 'Hva koster en Smart Nettside eller Standard Nettside?',
     answer:
-      'Våre pakker starter fra 14.900,- for en solid grunnmur. En fullverdig "Smart Nettside" med AI og booking ligger vanligvis på 24.900,-. Vi opererer med faste priser og ingen skjulte kostnader.',
+      'En standard profesjonell nettside koster kr 14 900,- i etablering og kr 490,-/mnd i drift. Vår bestselger, Smart Nettside med 24/7 integrert AI-assistent og auto-booking, koster kr 24 900,- i etablering og kr 990,-/mnd i drift. Vi opererer med transparente fastpriser og ingen skjulte kostnader.',
+  },
+  {
+    question: 'Hvordan fungerer den helautonome B2B Salgsagenten?',
+    answer:
+      'Salgsagenten prospekterer verifiserte beslutningstakere i Enhetsregisteret, sender personlige henvendelser via oppvarmede sekundærdomener og filtrerer alle svar. Varme leads og møter leveres direkte i innboksen og kalenderen din. Du slipper kaldprospektering og betaler kun et fast månedsabonnement.',
   },
   {
     question: 'Eier jeg nettsiden og koden selv?',
     answer:
-      'Ja, 100%. Hos Vikingnet er vi allergiske mot "lock-in". Du eier domenet, innholdet og koden. Hvis du mot formodning skulle ønske å flytte senere, står du helt fritt til det.',
+      'Ja, 100 %. Hos Vikingnet er vi allergiske mot «lock-in». Du eier domenet, innholdet og merkevaren din. Hvis du mot formodning skulle ønske å flytte til en annen leverandør senere, står du helt fritt til det.',
   },
   {
-    question: 'Hvor mye tid krever dette av meg?',
+    question: 'Hvor mye tid krever oppstart og levering av meg?',
     answer:
-      'Vårt mål er å frigjøre din tid. Vi tar oss av det tekniske og oppsettet av AI. Du trenger kun å stille til en 60-minutters oppstartssamtale og godkjenne designet underveis.',
+      'Minimalt. Vi arbeider 100 % asynkront for å spare din tid. Du oversender logo, ønsker og stikkord på e-post, vi bygger løsningen og setter opp AI-en, og du godkjenner utkastet asynkront. Ingen tidkrevende eller obligatoriske møter.',
+  },
+  {
+    question: 'Er det bindingstid på driftsavtalene?',
+    answer:
+      'Nei, våre standard månedsabonnement forskuddsfaktureres månedlig via EHF eller e-post uten lange bindingstider. Ved årlige forskuddsavtaler får du i tillegg 2 måneder gratis og kr 0,- i etablering på utvalgte tjenester.',
   },
 ];
 
@@ -84,23 +94,25 @@ export default function FAQ() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Left — Sticky heading */}
           <div ref={headingRef} className="lg:sticky lg:top-32 lg:self-start opacity-0">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-[#3B82F6]/10 border border-[#3B82F6]/20 text-[#3B82F6] text-xs font-semibold tracking-wider uppercase mb-4">
+              Ofte Stilte Spørsmål
+            </span>
             <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-white leading-tight mb-4">
-              Spørsmål før du{' '}
-              <span className="text-gradient">erobrer?</span>
+              Alt du lurer på før du{' '}
+              <span className="text-gradient">starter</span>
             </h2>
             <p className="text-lg text-[#94a3b8] mb-6 leading-relaxed">
-              Her er de vanligste tingene norske bedrifter lurer på før de starter
-              reisen med oss.
+              Her er svarene på de vanligste spørsmålene om våre autonome salgsagenter, smarte nettsider og faste abonnementspriser.
             </p>
             <a
-              href="#kontakt"
+              href="#kontakt-skjema"
               onClick={(e) => {
                 e.preventDefault();
-                document.getElementById('kontakt')?.scrollIntoView({ behavior: 'smooth' });
+                document.getElementById('kontakt-skjema')?.scrollIntoView({ behavior: 'smooth' });
               }}
               className="inline-flex items-center gap-1.5 text-sm font-medium text-[#3B82F6] hover:underline"
             >
-              Se hele FAQ-siden
+              Ta kontakt for et skriftlig tilbud
               <ArrowRight size={14} />
             </a>
           </div>

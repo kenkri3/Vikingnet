@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { ArrowRight, CheckCircle, Linkedin, Target, MessageSquare, Shield, BarChart3, Headphones, Users, Send } from 'lucide-react';
+import { ArrowRight, CheckCircle, Linkedin, Target, MessageSquare, Shield, BarChart3, Headphones, Users, Send, ShieldCheck } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import StarField from '../components/StarField';
@@ -82,12 +82,12 @@ const packages = [
 ];
 
 export default function QognitoPage() {
-  const demoSectionRef = useRef<HTMLDivElement>(null);
+  const formSectionRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
   const stepsRef = useRef<HTMLDivElement>(null);
   const featuresRef = useRef<HTMLDivElement>(null);
-  const demoRef = useRef<HTMLDivElement>(null);
+  const formBoxRef = useRef<HTMLDivElement>(null);
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
     name: '',
@@ -113,7 +113,7 @@ export default function QognitoPage() {
       const featEls = featuresRef.current?.querySelectorAll('.feature-card');
       if (featEls) gsap.fromTo(featEls, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.08, ease: 'power3.out', scrollTrigger: { trigger: featuresRef.current, start: 'top 75%' } });
 
-      if (demoRef.current) gsap.fromTo(demoRef.current, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', scrollTrigger: { trigger: demoRef.current, start: 'top 80%' } });
+      if (formBoxRef.current) gsap.fromTo(formBoxRef.current, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', scrollTrigger: { trigger: formBoxRef.current, start: 'top 80%' } });
     });
     return () => ctx.revert();
   }, []);
@@ -128,7 +128,7 @@ export default function QognitoPage() {
     setTimeout(() => {
       setSubmitted(false);
       setForm({ name: '', email: '', company: '', phone: '', package: '', notes: '' });
-    }, 4000);
+    }, 4500);
   };
 
   return (
@@ -150,15 +150,15 @@ export default function QognitoPage() {
               <span className="text-gradient">La dem komme til deg.</span>
             </h1>
             <p className="hero-animate text-lg text-[#94a3b8] max-w-[640px] mx-auto mb-10 leading-relaxed opacity-0">
-              Med over <strong className="text-white">3,1 millioner</strong> LinkedIn-brukere i Norge sitter dine neste kunder allerede der ute. 
+              Med over <strong className="text-white">3,1 millioner</strong> LinkedIn-brukere i Norge sitter dine neste kunder allerede der ute.{' '}
               Qognito finner dem, starter samtaler på <strong className="text-white">norsk</strong> og booker møter i kalenderen din.
             </p>
             <div className="hero-animate flex flex-wrap items-center justify-center gap-4 opacity-0">
               <button
-                onClick={() => demoSectionRef.current?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => formSectionRef.current?.scrollIntoView({ behavior: 'smooth' })}
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-primary text-white font-semibold text-base hover:shadow-[0_0_30px_rgba(59,130,246,0.4)] hover:scale-[1.03] transition-all duration-300"
               >
-                Book gratis demo
+                Få tilbud på LinkedIn-agent
                 <ArrowRight size={18} />
               </button>
               <a
@@ -170,6 +170,21 @@ export default function QognitoPage() {
                 Logg inn
                 <ArrowRight size={18} />
               </a>
+            </div>
+
+            <div className="hero-animate mt-8 flex flex-wrap items-center justify-center gap-6 text-xs text-[#94a3b8]/80 opacity-0">
+              <span className="flex items-center gap-1.5">
+                <ShieldCheck size={14} className="text-emerald-400" />
+                Ingen bindingstid
+              </span>
+              <span className="flex items-center gap-1.5">
+                <CheckCircle size={14} className="text-[#3B82F6]" />
+                100 % asynkron oppstart
+              </span>
+              <span className="flex items-center gap-1.5">
+                <CheckCircle size={14} className="text-[#3B82F6]" />
+                Månedlig EHF-faktura
+              </span>
             </div>
           </div>
         </section>
@@ -246,31 +261,44 @@ export default function QognitoPage() {
           </div>
         </section>
 
-        {/* Demo Form */}
-        <section ref={demoSectionRef} className="pb-24 lg:pb-32 px-6 bg-[#0f172a]">
-          <div ref={demoRef} className="max-w-[600px] mx-auto opacity-0">
+        {/* Request Form */}
+        <section ref={formSectionRef} className="pb-24 lg:pb-32 px-6 bg-[#0f172a]">
+          <div ref={formBoxRef} className="max-w-[600px] mx-auto opacity-0">
             <div className="text-center mb-10">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-[#3B82F6]/10 border border-[#3B82F6]/20 text-[#3B82F6] text-xs font-semibold tracking-wider uppercase mb-4">
+                Asynkron Oppstart
+              </span>
               <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-                Book en <span className="text-gradient">gratis demo</span>
+                Start din <span className="text-gradient">LinkedIn-kampanje</span>
               </h2>
-              <p className="text-lg text-[#94a3b8]">
-                15 minutter. Ingen forpliktelser. Vi kontakter deg innen 24 timer.
+              <p className="text-lg text-[#94a3b8] max-w-[500px] mx-auto">
+                Ingen møteplikt. Vi sender deg et skriftlig tilbud/ordrebekreftelse på e-post innen 1 time.
               </p>
             </div>
 
             <div className="bg-[#151e32] rounded-2xl border border-white/[0.08] p-8 lg:p-10">
               {submitted ? (
                 <div className="flex flex-col items-center py-8 text-center">
-                  <CheckCircle size={48} className="text-[#3B82F6] mb-4" />
-                  <h3 className="text-2xl font-bold text-white mb-2">Takk!</h3>
-                  <p className="text-[#94a3b8]">Vi har mottatt forespørselen din og kontakter deg innen 24 timer.</p>
+                  <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-4 text-emerald-400">
+                    <CheckCircle size={36} />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-2">Takk for din henvendelse!</h3>
+                  <p className="text-[#94a3b8] mb-4 text-sm leading-relaxed">
+                    Vi har mottatt dine opplysninger og sender et komplett tilbud og onboarding-instrukser til{' '}
+                    <strong className="text-white">{form.email || 'din e-post'}</strong>.
+                  </p>
+                  <p className="text-xs text-[#3B82F6]">Du godkjenner enkelt direkte på e-post.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div>
                     <label className="block text-sm font-medium text-white mb-2">Navn *</label>
                     <input
-                      type="text" name="name" required value={form.name} onChange={handleChange}
+                      type="text"
+                      name="name"
+                      required
+                      value={form.name}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 rounded-xl bg-[#0B1120] border border-white/[0.08] text-white placeholder-[#94a3b8]/50 focus:border-[#3B82F6] focus:outline-none transition-all"
                       placeholder="Ditt navn"
                     />
@@ -278,44 +306,64 @@ export default function QognitoPage() {
                   <div>
                     <label className="block text-sm font-medium text-white mb-2">E-post *</label>
                     <input
-                      type="email" name="email" required value={form.email} onChange={handleChange}
+                      type="email"
+                      name="email"
+                      required
+                      value={form.email}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 rounded-xl bg-[#0B1120] border border-white/[0.08] text-white placeholder-[#94a3b8]/50 focus:border-[#3B82F6] focus:outline-none transition-all"
                       placeholder="din@epost.no"
                     />
                   </div>
-                  <div>
-                    <label className="block text-sm font-medium text-white mb-2">Bedrift</label>
-                    <input
-                      type="text" name="company" value={form.company} onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl bg-[#0B1120] border border-white/[0.08] text-white placeholder-[#94a3b8]/50 focus:border-[#3B82F6] focus:outline-none transition-all"
-                      placeholder="Din bedrift"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-white mb-2">Telefon</label>
-                    <input
-                      type="tel" name="phone" value={form.phone} onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl bg-[#0B1120] border border-white/[0.08] text-white placeholder-[#94a3b8]/50 focus:border-[#3B82F6] focus:outline-none transition-all"
-                      placeholder="+47 000 00 000"
-                    />
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-white mb-2">Bedrift</label>
+                      <input
+                        type="text"
+                        name="company"
+                        value={form.company}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 rounded-xl bg-[#0B1120] border border-white/[0.08] text-white placeholder-[#94a3b8]/50 focus:border-[#3B82F6] focus:outline-none transition-all"
+                        placeholder="Din bedrift"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-white mb-2">Telefon</label>
+                      <input
+                        type="tel"
+                        name="phone"
+                        value={form.phone}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 rounded-xl bg-[#0B1120] border border-white/[0.08] text-white placeholder-[#94a3b8]/50 focus:border-[#3B82F6] focus:outline-none transition-all"
+                        placeholder="+47 000 00 000"
+                      />
+                    </div>
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-white mb-2">Hvor mange brukere trenger dere? *</label>
                     <select
-                      name="package" required value={form.package} onChange={handleChange}
+                      name="package"
+                      required
+                      value={form.package}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 rounded-xl bg-[#0B1120] border border-white/[0.08] text-white focus:border-[#3B82F6] focus:outline-none transition-all appearance-none cursor-pointer"
                     >
                       {packages.map((p) => (
-                        <option key={p.value} value={p.value}>{p.label}</option>
+                        <option key={p.value} value={p.value}>
+                          {p.label}
+                        </option>
                       ))}
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-white mb-2">Noe du vil vi skal vite på forhånd?</label>
+                    <label className="block text-sm font-medium text-white mb-2">Hvilken målgruppe ønsker du å nå?</label>
                     <textarea
-                      name="notes" rows={3} value={form.notes} onChange={handleChange}
+                      name="notes"
+                      rows={3}
+                      value={form.notes}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 rounded-xl bg-[#0B1120] border border-white/[0.08] text-white placeholder-[#94a3b8]/50 focus:border-[#3B82F6] focus:outline-none transition-all resize-none"
-                      placeholder="Fortell oss om dine behov..."
+                      placeholder="F.eks. Daglige ledere, IT-sjefer, HR-direktører i SMB..."
                     />
                   </div>
                   <button
@@ -323,10 +371,10 @@ export default function QognitoPage() {
                     className="w-full py-4 rounded-full bg-gradient-primary text-white font-semibold text-base hover:shadow-[0_0_30px_rgba(59,130,246,0.4)] hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-2"
                   >
                     <Send size={18} />
-                    Send forespørsel
+                    Motta skriftlig tilbud på e-post
                   </button>
                   <p className="text-xs text-[#94a3b8]/60 text-center">
-                    Ingen bindingstid. Alle priser eks. mva. Drives av AIChat Norge AS.
+                    Ingen bindingstid. Alle priser eks. mva. Forskuddsfakturert via EHF. Drives av AIChat Norge AS.
                   </p>
                 </form>
               )}
