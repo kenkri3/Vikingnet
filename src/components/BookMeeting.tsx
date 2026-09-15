@@ -142,11 +142,11 @@ export default function BookMeeting({ isOpen, onClose, service = '' }: BookMeeti
                   className="w-full px-4 py-3 rounded-xl bg-[#0B1120] border border-white/[0.08] text-white focus:border-[#3B82F6] focus:outline-none transition-all text-sm cursor-pointer"
                 >
                   <option value="">Velg løsning...</option>
-                  <optgroup label="B2B Salgsagenter & Outreach">
-                    <option value="ai-agent-niva1">B2B Salgsagent Nivå 1: Lead Hunter (kr 4 900,-/mnd)</option>
-                    <option value="ai-agent-niva2">B2B Salgsagent Nivå 2: Møtebooker (kr 7 900,-/mnd)</option>
-                    <option value="ai-agent-niva3">B2B Salgsagent Nivå 3: Salgscloser (kr 12 500,-/mnd)</option>
-                    <option value="qognito-linkedin">Qognito LinkedIn Outreach (fra kr 1 490,-/mnd)</option>
+                  <optgroup label="B2B Salgsagenter & Outreach (Harmonisert agentmodell)">
+                    <option value="ai-agent-solo">B2B Salgsagent Solo: Lead Hunter (kr 1 490,-/mnd • kr 0,- etabl.)</option>
+                    <option value="ai-agent-duo">B2B Salgsagent Duo: Møtebooker (kr 2 490,-/mnd • kr 0,- etabl.)</option>
+                    <option value="ai-agent-trio">B2B Salgsagent Trio: Salgscloser (kr 3 490,-/mnd • kr 0,- etabl.)</option>
+                    <option value="qognito-linkedin">Qognito LinkedIn Outreach (fra kr 1 490,-/mnd • kr 0,- etabl.)</option>
                   </optgroup>
                   <optgroup label="Nettsider & E-handel">
                     <option value="smart-nettside">Smart Nettside m/ AI (kr 990,-/mnd + 24 900,-)</option>
