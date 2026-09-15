@@ -1,35 +1,74 @@
-import { Routes, Route } from 'react-router';
-import HomePage from './pages/HomePage';
-import SmartNettsidePage from './pages/SmartNettsidePage';
-import NettsidePage from './pages/NettsidePage';
-import NettbutikkPage from './pages/NettbutikkPage';
-import SkreddersomPage from './pages/SkreddersomPage';
-import AutoFeedPage from './pages/AutoFeedPage';
-import AIAgentPage from './pages/AIAgentPage';
-import AIChatbotPage from './pages/AIChatbotPage';
-import AutomatiseringPage from './pages/AutomatiseringPage';
-import KundeservicePage from './pages/KundeservicePage';
-import QognitoPage from './pages/QognitoPage';
-import PersonvernPage from './pages/PersonvernPage';
-import VilkarPage from './pages/VilkarPage';
+import { HelmetProvider } from 'react-helmet-async';
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Suspense, lazy } from 'react';
+import { Layout } from '@/components/Layout';
+
+import { HomePage } from '@/pages/HomePage';
+import { ServicesPage } from '@/pages/ServicesPage';
+import { ServiceDetailPage } from '@/pages/ServiceDetailPage';
+import { PricingPage } from '@/pages/PricingPage';
+import { AboutPage } from '@/pages/AboutPage';
+import { ContactPage } from '@/pages/ContactPage';
+import { PrivacyPage } from '@/pages/PrivacyPage';
+import { TermsPage } from '@/pages/TermsPage';
+import { OnboardingPortalPage } from '@/pages/OnboardingPortalPage';
+import { AgentsPage } from '@/pages/AgentsPage';
+import { BlogPage } from '@/pages/BlogPage';
+import { BlogPostPage } from '@/pages/BlogPostPage';
+import { NotFoundPage } from '@/pages/NotFoundPage';
+
+import { trackPageView } from '@/lib/analytics';
+
+/** When navigating to "/#section" from another page, scroll to that section. */
+function RouteHandler() {
+  const { pathname, hash, search } = useLocation();
+  
+  useEffect(() => {
+    // Track pageview on route change (kun hvis brukeren har godtatt cookies)
+    trackPageView(pathname + search);
+
+    if (hash) {
+      const id = hash.replace('#', '');
+      requestAnimationFrame(() => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+  }, [pathname, hash, search]);
+  
+  return null;
+}
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/smart-nettside" element={<SmartNettsidePage />} />
-      <Route path="/nettside" element={<NettsidePage />} />
-      <Route path="/nettbutikk" element={<NettbutikkPage />} />
-      <Route path="/skreddersom" element={<SkreddersomPage />} />
-      <Route path="/autofeed" element={<AutoFeedPage />} />
-      <Route path="/ai-agent" element={<AIAgentPage />} />
-      <Route path="/ai-chatbot" element={<AIChatbotPage />} />
-      <Route path="/automatisering" element={<AutomatiseringPage />} />
-      <Route path="/kundeservice-platform" element={<KundeservicePage />} />
-      <Route path="/qognito" element={<QognitoPage />} />
-      <Route path="/personvern" element={<PersonvernPage />} />
-      <Route path="/vilkar-og-betingelser" element={<VilkarPage />} />
-    </Routes>
+    <HelmetProvider>
+      <BrowserRouter>
+        <RouteHandler />
+        <Suspense fallback={<div className="flex min-h-screen items-center justify-center text-navy-900 font-medium">Laster...</div>}>
+          <Routes>
+            <Route element={<Layout />}>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/tjenester" element={<ServicesPage />} />
+              <Route path="/tjenester/:slug" element={<ServiceDetailPage />} />
+              <Route path="/priser" element={<PricingPage />} />
+              <Route path="/om-oss" element={<AboutPage />} />
+              <Route path="/kontakt" element={<ContactPage />} />
+              <Route path="/blogg" element={<BlogPage />} />
+              <Route path="/blogg/:slug" element={<BlogPostPage />} />
+              <Route path="/personvern" element={<PrivacyPage />} />
+              <Route path="/salgsvilkar" element={<TermsPage />} />
+              <Route path="/agenter" element={<AgentsPage />} />
+              <Route path="/ai-agenter" element={<AgentsPage />} />
+              <Route path="/ai-agent" element={<Navigate to="/tjenester/b2b-salgsagent" replace />} />
+              <Route path="/portal/onboarding" element={<OnboardingPortalPage />} />
+              <Route path="/portal" element={<OnboardingPortalPage />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Route>
+          </Routes>
+        </Suspense>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }
 

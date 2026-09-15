@@ -9,7 +9,7 @@ const PLANS = [
     note: 'Solo fra kr 1.490,-/mnd',
     featured: true,
     cta: 'Se salgspakker & priser',
-    link: '/ai-agent',
+    link: '/tjenester/b2b-salgsagent',
     features: [
       '300–1 500 verifiserte beslutningstakere / mnd',
       'Målrettet outreach iht. Markedsføringsloven § 15',
